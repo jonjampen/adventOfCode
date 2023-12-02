@@ -2,8 +2,8 @@
 	// import { Github } from "lucide-svelte";
 </script>
 
-<nav class="flex justify-between items-center h-16 px-4 bg-green-500">
-	<span><a href="/">Advent Of Code</a> | <a href="https://jonjampen.ch/">Jon Jampen</a></span>
+<nav class="flex justify-between items-center h-16 px-10 bg-emerald-500">
+	<span><a href="/">Advent Of Code</a> | <a href="https://jonjampen.ch/" target="_blank">Jon Jampen</a></span>
 	<ul class="flex gap-6">
 		<li><a href="/">Home</a></li>
 		<li><a href="/2023">2023</a></li>
