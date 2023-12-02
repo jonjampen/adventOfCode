@@ -1,3 +1,7 @@
+<script>
+	let years = ["2023"];
+</script>
+
 <h1 class="text-5xl">Advent Of Code</h1>
 <h2 class="text-2xl">By Jon Jampen</h2>
 <br />
@@ -8,5 +12,7 @@
 <br />
 <h3 class="text-xl">Select Year</h3>
 <ul class="list-disc pl-8">
-	<li><a href="/2023">2023</a></li>
+	{#each years as year}
+		<li><a href="/{year}">{year}</a></li>
+	{/each}
 </ul>
