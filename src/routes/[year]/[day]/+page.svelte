@@ -15,4 +15,6 @@
 
 <h1 class="text-3xl">Advent of Code {data.year}: Day {data.day}</h1>
 <a href="https://adventofcode.com/{data.year}/day/{formattedDay}" target="_blank" class="underline text-green-700">Read the problem</a>
+<br />
+<br />
 <svelte:component this={Solution} />
