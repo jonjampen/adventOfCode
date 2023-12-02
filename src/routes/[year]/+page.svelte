@@ -29,6 +29,8 @@
 </script>
 
 <h1 class="text-3xl">Advent of Code {data.year}</h1>
+<br />
+<h3 class="text-xl">Select Day</h3>
 <ul class="list-disc pl-8">
 	{#each days as day}
 		<li><a href="{data.year}/{day}">Day {day}</a></li>
