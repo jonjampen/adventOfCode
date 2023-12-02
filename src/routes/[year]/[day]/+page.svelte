@@ -4,7 +4,11 @@
 	export let data;
 	let Solution;
 	onMount(async () => {
-		Solution = (await import(`../../../solutions/${data.year}/${data.day}/Solution.svelte`)).default;
+		try {
+			Solution = (await import(`../../../solutions/${data.year}/${data.day}/Solution.svelte`)).default;
+		} catch (e) {
+			Solution = (await import(`../../../solutions/Fallback.svelte`)).default;
+		}
 	});
 </script>
 
