@@ -5,7 +5,7 @@
 	export let data;
 </script>
 
-<div class="max-h-screen h-screen flex flex-col justify-between">
+<div class="min-h-[100vh] max-w-[100vw] flex flex-col justify-between overflow-hidden">
 	<div class="">
 		<Nav />
 		<main class="mx-10 mt-10">
