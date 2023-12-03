@@ -2,15 +2,46 @@
 	let result = "";
 	let solutions = [];
 
-	function part1(array) {}
-
-	function part2(array) {}
-
-	function calculate(e) {
-		let input = document.getElementById("input").value.trim().split("\n");
+	function part1(input) {
 		let red = parseInt(document.getElementById("red").value);
 		let blue = parseInt(document.getElementById("blue").value);
 		let green = parseInt(document.getElementById("green").value);
+
+		// validate games
+		solutions = input.map((game, gameId) => {
+			let gameValid = game.map((draw) => {
+				return !(draw.green > green) && !(draw.red > red) && !(draw.blue > blue);
+			});
+			if (!gameValid.includes(false)) {
+				return gameId + 1;
+			}
+			return false;
+		});
+		solutions = solutions.filter((s) => s != false); // remove false values
+		result = solutions.reduce((temp, val) => temp + val); // calc sum
+	}
+
+	function part2(input) {
+		solutions = input.map((game, gameId) => {
+			let minColor = {
+				red: 0,
+				green: 0,
+				blue: 0,
+			};
+
+			game.map((draw) => {
+				minColor.red = Math.max(draw.red || 0, minColor.red);
+				minColor.green = Math.max(draw.green || 0, minColor.green);
+				minColor.blue = Math.max(draw.blue || 0, minColor.blue);
+				console.log(minColor, draw.red, draw.green, draw.blue);
+			});
+			return minColor.red * minColor.green * minColor.blue;
+		});
+		result = solutions.reduce((temp, val) => temp + val);
+	}
+
+	function calculate(e) {
+		let input = document.getElementById("input").value.trim().split("\n");
 
 		/* desired structure
         input = [
@@ -41,18 +72,11 @@
 			});
 		});
 
-		// validate games
-		solutions = input.map((game, gameId) => {
-			let gameValid = game.map((draw) => {
-				return !(draw.green > green) && !(draw.red > red) && !(draw.blue > blue);
-			});
-			if (!gameValid.includes(false)) {
-				return gameId + 1;
-			}
-			return false;
-		});
-		solutions = solutions.filter((s) => s != false); // remove false values
-		result = solutions.reduce((temp, val) => temp + val); // calc sum
+		if (e.target.id === "part1") {
+			part1(input);
+		} else {
+			part2(input);
+		}
 	}
 </script>
 
@@ -76,5 +100,5 @@
 <button on:click={calculate} id="part2">Solve for Part 2</button>
 <br />
 <br />
-<p>Valid Game Ids: {solutions}</p>
+<p>Valid Game Ids / Power: {solutions}</p>
 <p>Result: {result}</p>
