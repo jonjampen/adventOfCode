@@ -1,10 +1,19 @@
 import { readFile } from 'fs/promises';
 import { existsSync } from 'node:fs';
-
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 export async function load({ params, fetch }) {
-    const filePath = `src/solutions/${params.year}/${params.day}/solution.js`;
+    // const filePath = `../../../solutions/${params.year}/${params.day}/solution.js`;
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename)
+    console.log(__dirname)
+
+    const filePath = path.join(__dirname, '..', '..', '..', 'solutions', params.year, params.day, 'solution.js');
+    console.log(filePath);
     let fileData = ""
+    console.log(existsSync(filePath))
     if (existsSync(filePath)) {
         fileData = readFile(filePath, 'utf8', (err, data) => {
             if (!err && data) {
