@@ -1,5 +1,3 @@
-export let sum = "";
-
 function part1(array) {
     return array.filter((char) => !isNaN(parseInt(char)));
 }
@@ -20,7 +18,7 @@ function part2(array) {
     });
 }
 
-export function calculate(e) {
+export default function calculate(e) {
     let input = document.getElementById("input").value.split("\n");
 
     let lines = input.map((line) => {
@@ -37,5 +35,5 @@ export function calculate(e) {
         return parseInt(lineRes[0] + "" + lineRes[lineRes.length - 1]);
     });
 
-    sum = lines.reduce((partialSum, val) => partialSum + val);
+    return lines.reduce((partialSum, val) => partialSum + val);
 }
