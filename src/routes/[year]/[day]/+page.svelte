@@ -12,18 +12,21 @@
 			Solution = (await import(`../../../solutions/Fallback.svelte`)).default;
 		}
 	});
+	let open = false;
 </script>
 
 <h1 class="text-3xl">Advent of Code {data.year}: Day {data.day}</h1>
 <a href="https://adventofcode.com/{data.year}/day/{formattedDay}" target="_blank" class="underline text-green-700">Read the problem</a>
 <br />
 <br />
+<div class="bg-gray-200 py-4 px-2 cursor-pointer" on:click={() => (open = !open)}>
+	<h3 class="underline">Show solution code</h3>
+</div>
+{#if open}
+	<pre><code class="code">{@html Prism.highlight(data.code, Prism.languages["javascript"])}</code></pre>
+{/if}
+<br />
 <svelte:component this={Solution} />
-
-<br />
-<br />
-<h3>Show solution code</h3>
-<pre><code class="code">{@html Prism.highlight(data.code, Prism.languages["javascript"])}</code></pre>
 <br />
 
 <svelte:head>
