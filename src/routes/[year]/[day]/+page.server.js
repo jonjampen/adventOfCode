@@ -6,11 +6,11 @@ import { fileURLToPath } from 'url';
 
 export async function load({ params, fetch }) {
     // const filePath = `../../../solutions/${params.year}/${params.day}/solution.js`;
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename)
-    console.log(__dirname)
+    // const __filename = fileURLToPath(import.meta.url);
+    // const __dirname = dirname(__filename)
+    // console.log(__dirname)
 
-    const filePath = path.join(__dirname, '..', '..', '..', 'solutions', params.year, params.day, 'solution.js');
+    const filePath = 'https://advent.jonjampen.ch/solution.txt';
     console.log(filePath);
     let fileData = ""
     console.log(existsSync(filePath))
